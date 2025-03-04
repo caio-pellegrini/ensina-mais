@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://raw.githubusercontent.com/caio-pellegrini/ensina-mais/refs/heads/main/.github/images/logo-ensina.svg" alt="logo">
+</p>
+
 # Ensina+
 Ensina+ é uma plataforma educacional digital desenvolvida para os alunos da rede SESI-SP, com o objetivo de melhorar a preparação para vestibulares, promovendo uma experiência personalizada, acessível e integrada.
 
@@ -33,20 +37,22 @@ Abaixo estão capturas de tela reais da plataforma Ensina+, mostrando algumas de
 ![Painel Administrativo](.github/images/admin.jpg)
 
 ### Tecnologias Utilizadas
-- Design e Prototipação: Figma e Pacote Adobe (para edição dos vídeos)
-- Desenvolvimento Front-End e Back-End: Laravel, PHP, TailwindCSS, MySQL.
+- **Design e Prototipação:** Figma e Pacote Adobe (para criação do logotipo e edição dos vídeos da plataforma)
+- **Desenvolvimento Front-End:** HTML, CSS, JavaScript, TailwindCSS, Blade (Laravel)
+- **Desenvolvimento Back-End:** Laravel (PHP), Node.js, MySQL
 
 ### Benefícios para a Rede SESI-SP
-Promoção da inovação e qualidade educacional.
-Redução da dependência de plataformas externas.
-Melhor desempenho dos alunos nos vestibulares.
-Inclusão e acessibilidade no aprendizado digital.
+Em caso de sua adoção oficial, o projeto poderia trazer vários benefícios para a Rede SESI-SP, como:
+1. Promoção da inovação e qualidade educacional.
+2. Redução da dependência de plataformas externas.
+3. Melhor desempenho dos alunos nos vestibulares.
+4. Inclusão e acessibilidade no aprendizado digital.
 
 ### Contribuidores
-O desenvolvimento foi realizado pelos alunos dos cursos de Desenvolvimento de Sistemas e Técnico em Multimídia - CE SESI 227, sendo este o projeto final entregue pelos alunos.
+O desenvolvimento foi realizado pelos alunos dos cursos *Técnico em Análise e Desenvolvimento de Sistemas* e *Técnico em Multimídia* - CE SESI 227, sendo este o projeto final entregue pelos alunos.
 
 ### Próximos passos
-- Expansão: Incluir mais unidades e turmas do SESI.
-- Inteligência Artificial: Introdução de IA para personalizar o aprendizado.
-- Gamificação: Incentivar o engajamento através de desafios e recompensas.
-- Métricas Avançadas: Melhorar o acompanhamento de professores e coordenadores.
+- **Expansão:** Incluir mais unidades e turmas do SESI.
+- **Inteligência Artificial:** Introdução de IA para personalizar o aprendizado.
+- **Gamificação:** Incentivar o engajamento através de desafios e recompensas.
+- **Métricas Avançadas:** Melhorar o acompanhamento de professores e coordenadores.
