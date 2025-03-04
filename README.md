@@ -13,11 +13,13 @@ Ensina+ é uma plataforma educacional digital desenvolvida para os alunos da red
 Atualmente, muitos alunos do SESI recorrem a plataformas externas para complementar seus estudos. O Ensina+ busca preencher essa lacuna, aproveitando a infraestrutura de alta qualidade e os professores excepcionais do SESI para criar um ambiente digital próprio e inovador.
 
 ### Funcionalidades
-- Videoaulas: Aulas dinâmicas e organizadas por disciplinas.
-- Correção de Redações: Ferramenta para prática e feedback estruturado.
-- Acompanhamento Personalizado: Relatórios de desempenho individualizados.
-- Fórum de Interação: Comunicação direta com professores e outros alunos.
-- Painel Administrativo: Gerenciamento eficiente para professores e coordenadores.
+- **Videoaulas:** Aulas dinâmicas e organizadas por disciplinas.
+- **Painel Administrativo:** Gerenciamento eficiente para professores e coordenadores.
+- **Fórum de Interação:** Comunicação direta com professores e outros alunos.
+- **Correção de Redações:** Ferramenta para prática e feedback estruturado.
+- **Acompanhamento Personalizado:** Relatórios de desempenho individualizados.
+
+
 
 ### Demonstração Visual
 Abaixo estão capturas de tela reais da plataforma Ensina+, mostrando algumas de suas principais funcionalidades:
