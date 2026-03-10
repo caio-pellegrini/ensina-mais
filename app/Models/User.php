@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserRole;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Mockery\Matcher\Subset;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -46,6 +48,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRole::class,
         ];
     }
 
@@ -71,17 +74,14 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         $rolesAllowed = [
-            'teacherPanel' => ['professor', 'admin'],
-            'admin' => ['admin'],
-            // Define other panels and roles as needed
+            'teacherPanel' => [UserRole::Professor, UserRole::Admin],
+            'admin' => [UserRole::Admin],
         ];
 
-        // Check if the panel ID exists in the roles allowed list
-        if (!array_key_exists($panel->getId(), $rolesAllowed)) {
+        if (! array_key_exists($panel->getId(), $rolesAllowed)) {
             return false;
         }
 
-        // Grant access based solely on the user's role for the specific panel
         return in_array($this->role, $rolesAllowed[$panel->getId()]);
     }
 }

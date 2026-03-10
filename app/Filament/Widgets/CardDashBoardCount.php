@@ -1,18 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Widgets;
 
+use App\Enums\UserRole;
+use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use App\Models\User;
 
 class CardDashBoardCount extends BaseWidget
 {
     protected function getStats(): array
     {
         $totalUsers = User::count();
-        $totalTeachers = User::where('role', 'professor')->count();
-        $totalStudents = User::where('role', 'aluno')->count();
+        $totalTeachers = User::where('role', UserRole::Professor)->count();
+        $totalStudents = User::where('role', UserRole::Aluno)->count();
 
         return [
             Stat::make('Total de usuários', $totalUsers)

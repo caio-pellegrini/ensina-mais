@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
@@ -31,15 +34,12 @@ class AuthenticatedSessionController extends Controller
         // Verificar o papel (role) do usuário e redirecionar para a rota apropriada
         $user = Auth::user();
 
-        if ($user->role === 'aluno') {
-            // return redirect()->intended('/home');
+        if ($user->role === UserRole::Aluno) {
             return redirect()->route('home');
-        } elseif ($user->role === 'professor') {
+        } elseif ($user->role === UserRole::Professor) {
             return redirect()->intended('/professor');
-            // return redirect()->route('professor');
-        } elseif ($user->role === 'admin') {
+        } elseif ($user->role === UserRole::Admin) {
             return redirect()->intended('/admin');
-            // return redirect()->route('admin');
         }
 
         // Caso o role não seja identificado, redireciona para o dashboard por padrão
