@@ -13,11 +13,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Criação do usuário Administrador
+        User::firstOrCreate(
+            ['email' => 'admin@ensinamais.com.br'],
+            [
+                'name' => 'Admin Padrão',
+                'password' => bcrypt('Admin#0987'),
+                'role' => 'admin',
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Criação do usuário Professor
+        User::firstOrCreate(
+            ['email' => 'professor@ensinamais.com.br'],
+            [
+                'name' => 'Professor Padrão',
+                'password' => bcrypt('Professor#0987'),
+                'role' => 'professor',
+            ]
+        );
+
+        // Criação do usuário Aluno
+        User::firstOrCreate(
+            ['email' => 'aluno@ensinamais.com.br'],
+            [
+                'name' => 'Aluno Padrão',
+                'password' => bcrypt('Aluno#0987'),
+                'role' => 'aluno',
+            ]
+        );
     }
 }

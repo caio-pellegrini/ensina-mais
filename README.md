@@ -112,11 +112,17 @@ cd ensina-mais
    DB_USERNAME=
    DB_PASSWORD=
    ```
-5. Execute as *migrations* para preparar o banco de dados (criação das tabelas):
+5. Execute as *migrations* para preparar o banco de dados (criação das tabelas) e rode os **seeders** para gerar os dados de configuração inicial do sistema:
    ```bash
-   php artisan migrate
+   php artisan migrate --seed
    ```
-   *(Caso o projeto necessite de dados iniciais, você pode usar `php artisan migrate --seed`)*
+   > **Aviso:** Ao rodar o comando acima, os seguintes **usuários padrão** serão criados no sistema para facilitar os testes iniciais de desenvolvimento:
+   > 
+   > | Perfil | E-mail | Senha |
+   > | :--- | :--- | :--- |
+   > | **Administrador** | admin@ensinamais.com.br | `Admin#0987` |
+   > | **Professor** | professor@ensinamais.com.br | `Professor#0987` |
+   > | **Aluno** | aluno@ensinamais.com.br | `Aluno#0987` |
 
 ### 3. Executando a Aplicação
 
