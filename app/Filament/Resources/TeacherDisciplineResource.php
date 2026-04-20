@@ -1,10 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\Resources;
 
+use App\Enums\UserRole;
 use App\Filament\Resources\TeacherDisciplineResource\Pages;
 use App\Filament\Resources\TeacherDisciplineResource\RelationManagers;
+use App\Models\Discipline;
 use App\Models\TeacherDiscipline;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,8 +17,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Models\User;
-use App\Models\Discipline;
 
 class TeacherDisciplineResource extends Resource
 {
@@ -32,7 +35,7 @@ class TeacherDisciplineResource extends Resource
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->label('Professor(a)')
-                    ->options(User::where('role', 'professor')->pluck('name', 'id'))
+                    ->options(User::where('role', UserRole::Professor)->pluck('name', 'id'))
                     ->required(),
                 Forms\Components\Select::make('discipline_id')
                     ->label('Disciplina')

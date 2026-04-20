@@ -1,14 +1,14 @@
 <?php
 
-
+declare(strict_types=1);
 
 namespace App\Models;
 
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Lesson extends Model
 {
@@ -27,54 +27,50 @@ class Lesson extends Model
         return $this->belongsToMany(User::class, 'students_lessons')->withPivot('is_completed', 'completed_at');
     }
 
-    private $apiKey = 'AIzaSyD5p-OyqWK6GQhdalJd_Egm0HTsvrtBhic';
-
-    public function fetchAndStoreVideoDurations()
+    private function fetchAndStoreVideoDurations(): void
     {
-        if (!$this->link) {
-            return null;
+        if (! $this->link) {
+            return;
         }
 
         preg_match("/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/", $this->link, $matches);
 
-        if (!isset($matches[1])) {
-            return null;
+        if (! isset($matches[1])) {
+            return;
         }
 
         $videoId = $matches[1];
 
-        $response = Http::get("https://www.googleapis.com/youtube/v3/videos", [
+        $response = Http::get('https://www.googleapis.com/youtube/v3/videos', [
             'id' => $videoId,
             'part' => 'contentDetails',
-            'key' => $this->apiKey
+            'key' => config('services.youtube.key'),
         ]);
+
         if ($response->successful()) {
             $videoData = $response->json();
 
-            // Verifica se a duração foi retornada e a converte
             if (isset($videoData['items'][0]['contentDetails']['duration'])) {
                 $duration = $videoData['items'][0]['contentDetails']['duration'];
                 $this->duration = $this->convertDuration($duration);
-                $this->save(); // Salva a duração no banco de dados
+                $this->save();
             }
         }
     }
 
-    private function convertDuration($youtubeDuration)
+    private function convertDuration(string $youtubeDuration): string
     {
         $interval = new \DateInterval($youtubeDuration);
 
-        // Converte para o formato H:i:s
         $hours = $interval->h;
         $minutes = $interval->i;
         $seconds = $interval->s;
 
         if ($hours > 0) {
-            $minutes += $hours * 60; // Adiciona as horas aos minutos
+            $minutes += $hours * 60;
         }
-    
-        // Retorna o formato min:seg, sem os zeros extras
-        return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+
+        return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
     }
 
     public function getSlugOptions() : SlugOptions

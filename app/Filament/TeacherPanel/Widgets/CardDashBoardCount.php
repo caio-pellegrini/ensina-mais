@@ -1,17 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Filament\TeacherPanel\Widgets;
 
+use App\Enums\UserRole;
+use App\Models\QuestionForum;
+use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use App\Models\User;
-use App\Models\QuestionForum;
 
 class CardDashBoardCount extends BaseWidget
 {
     protected function getStats(): array
     {
-        $totalStudents = User::where('role', 'aluno')->count();
+        $totalStudents = User::where('role', UserRole::Aluno)->count();
         $totalQuestionForum = QuestionForum::count();
 
         return [

@@ -9,19 +9,19 @@
         "optimize:clear": "php artisan optimize:clear && php artisan filament:optimize-clear"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.2",
-        "alpinejs": "^3.4.2",
-        "autoprefixer": "^10.4.20",
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.41",
-        "tailwindcss": "^3.4.15",
-        "vite": "^6.0.3"
+        "@tailwindcss/forms": "^0.5.9",
+        "alpinejs": "^3.14.9",
+        "autoprefixer": "^10.4.21",
+        "axios": "^1.8.4",
+        "laravel-vite-plugin": "^1.2",
+        "postcss": "^8.5.3",
+        "tailwindcss": "^3.4.17",
+        "vite": "^6.2.4"
     },
     "dependencies": {
-        "@alpinejs/persist": "^3.14.1",
+        "@alpinejs/persist": "^3.14.9",
         "flowbite": "^2.5.2",
-        "framer-motion": "^11.3.31",
-        "swiper": "^11.1.14"
+        "framer-motion": "^12.6.3",
+        "swiper": "^11.2.6"
     }
 }
