@@ -1,18 +1,17 @@
 <?php
 
-
-
 namespace App\Models;
 
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
+use App\Traits\HasNameSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
+use Spatie\Sluggable\HasSlug;
 
 class Lesson extends Model
 {
     use HasFactory;
+    use HasNameSlug;
     use HasSlug;
 
     protected $fillable = ['topic_id', 'name', 'slug', 'link', 'content', 'order', 'is_high_relevance', 'duration'];
@@ -31,22 +30,22 @@ class Lesson extends Model
 
     public function fetchAndStoreVideoDurations()
     {
-        if (!$this->link) {
+        if (! $this->link) {
             return null;
         }
 
-        preg_match("/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/", $this->link, $matches);
+        preg_match('/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $this->link, $matches);
 
-        if (!isset($matches[1])) {
+        if (! isset($matches[1])) {
             return null;
         }
 
         $videoId = $matches[1];
 
-        $response = Http::get("https://www.googleapis.com/youtube/v3/videos", [
+        $response = Http::get('https://www.googleapis.com/youtube/v3/videos', [
             'id' => $videoId,
             'part' => 'contentDetails',
-            'key' => $this->apiKey
+            'key' => $this->apiKey,
         ]);
         if ($response->successful()) {
             $videoData = $response->json();
@@ -72,15 +71,8 @@ class Lesson extends Model
         if ($hours > 0) {
             $minutes += $hours * 60; // Adiciona as horas aos minutos
         }
-    
-        // Retorna o formato min:seg, sem os zeros extras
-        return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-    }
 
-    public function getSlugOptions() : SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug');
+        // Retorna o formato min:seg, sem os zeros extras
+        return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
     }
 }
