@@ -3,7 +3,27 @@
 </p>
 
 # Ensina+
-Ensina+ é uma plataforma educacional digital desenvolvida para os alunos da rede SESI-SP, com o objetivo de melhorar a preparação para vestibulares, promovendo uma experiência personalizada, acessível e integrada.
+
+**A digital learning platform created as a SENAI final project for students in the SESI-SP school network.**
+
+Ensina+ was developed collaboratively by students from the **Systems Analysis and Development** and **Multimedia** technical programs at CE SESI 227. The project addressed a real product question: how could SESI offer students its own integrated environment for entrance-exam preparation instead of relying only on external learning platforms?
+
+The team built a working web platform and presented the project to a **SESI-SP team**, turning the final course project into an opportunity to practice product thinking, multidisciplinary collaboration, implementation, and presentation to real stakeholders.
+
+### Product highlights
+
+- Video lessons organized by subject.
+- Administrative tools for teachers and coordinators.
+- Student/teacher discussion forum.
+- Essay practice and structured feedback workflows.
+- Individual performance tracking.
+- A complete visual identity and interface designed alongside the software.
+
+### Stack
+
+**Laravel / PHP · Blade · Tailwind CSS · JavaScript · Node.js · MySQL · Figma**
+
+> The detailed project documentation below is kept in Portuguese because the product was created and presented in Brazil.
 
 - [Objetivo](#objetivo)
 - [Funcionalidades](#funcionalidades)
